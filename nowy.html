@@ -1,0 +1,72 @@
+
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styl.css">
+    
+    </head>
+    <body>
+    
+    <script type="text/javascript">
+    function bmi()  // oblicza bmi
+    {
+        var a= parseInt(document.getElementById('waga').value);
+        var b= parseInt(document.getElementById('masa').value);
+        
+        
+        while (a <= 0  | b <= 0) {
+            alert ("nie moze byc zero");
+            status.innerHTML = "false";
+            return false;}
+
+            
+           d= a*b;
+
+      
+        
+        document.getElementById("new").innerHTML="BMI: "+ d; 
+        
+    }
+    function wiek () //pobiera datę urodzenia
+    {
+        var wiek= parseInt(document.getElementById('wiek').value);
+        
+       
+        document.getElementById("new1").innerHTML="Wiek osoby: "+ wiek;
+        
+    }
+    function dane () // wpisanie bmi i wieku do tabeli
+
+    var tabela = [];
+    tabela [0] = tabela.push(wiek).value;
+    tabela [1] = tabela.push(bmi).value;
+
+    document.getElementById("new2").innerHTML="Dane: "+ dane;
+
+    </script>
+    
+    <h1>Waga</h1>
+    Podaj swoją wagę:    <input type="number" id="waga">
+    <br>
+    <h1>Masa Ciała</h1>
+    Podaj swoje kilogramy:    <input type="number" id="masa">
+    <br>
+    <h1>Wiek</h1>
+    Podaj datę urodzienia:    <input type="date" id="wiek" >
+    <br>
+
+    <input type="button" name="BMI" value="bmi" Onclick="bmi()"> 
+    
+    <input type="button" name="wiek" value="wiek" Onclick="wiek()">
+    
+    <div id="new">Wynik BMI</div>
+
+    <div id="new1">Wynik wiek</div>
+
+    <div id="new2">Tablica</div>
+    
+    </body>
+    </html>
+    
+
+     
