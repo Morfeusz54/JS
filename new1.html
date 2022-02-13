@@ -1,0 +1,147 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styl.css" />
+    <style>
+      div {
+        /* opis ramek */
+
+        flex-direction: column-reverse;
+        justify-content: space-around;
+        text-align: center;
+        float: left;
+        height: 250px;
+        width: 28%;
+        color: black;
+        font-weight: bold;
+        font-size: 12;
+        font-family: "Times New Roman", Times, serif, "Arial Narrow", Arial,
+          sans-serif;
+        padding: 8px;
+        margin: auto;
+        border: 2px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>Wzrost</p>
+      <p>Podaj swój wzrost: <input type="number" id="zwrost" /></p>
+
+      <p>Waga</p>
+      <p>Podaj swoje kilogramy: <input type="number" id="masa" /></p>
+
+      <p>Wiek</p>
+      <p>Podaj datę urodzienia: <input type="date" id="wiek" /></p>
+
+      <input type="button" name="bmi" value="Zatwierdz" Onclick="bmi()" />
+    </div>
+
+    <div>
+      <p id="new">Zwrost</p>
+
+      <p id="new1">Waga</p>
+
+      <p id="new2">Wiek</p>
+
+      <p id="new3">BMI</p>
+
+
+      <input type="button" name="wiek" value="wiek" Onclick="wiek()" />
+
+     
+    </div>
+
+    <div>
+      <input type="button" name="dane" value="tabela" Onclick="dane()" />
+      <input type="button" name="czyszczenie" value="czyszczenie" Onclick="czyszczenie()" />
+      <p id="new4">Historia</p>
+      
+    </div>
+
+    <script type="text/javascript">
+      // będzie jedna duża tabela ze wszystkimi pomiarami
+      var tabela = [];
+
+      function bmi() {
+        // oblicza bmi
+        var a = parseInt(document.getElementById("zwrost").value);
+        var b = parseInt(document.getElementById("masa").value);
+        
+        while ((a <= 0) | (b <= 0)) {
+          alert("nie moze byc zero");
+          status.innerHTML = "false";
+          return false;
+        }
+        while ((120 >= a >= 240) | (40 >= b >= 200)) { // warunek dotyczący wagi i wzrostu
+          alert("warość nie prawidłowa");
+          status.innerHTML = "false";
+          return false;
+        }
+        //  BMI
+        
+        d = (b / ((a *a)/1000)).toFixed(2);
+        //let i = b.length-1;
+
+        // ustawia...
+        document.getElementById("new3").innerHTML = "BMI: " + d;
+        document.getElementById("new").innerHTML = "Zwrost: " + a;
+        document.getElementById("new1").innerHTML = "Waga: " + b;
+        // ...ale też zwraca BMI, zwrost, masa
+        return [d, a, b];
+        
+      }
+      function wiek() {
+        //pobiera datę urodzenia
+        var wiek = parseInt(document.getElementById("wiek").value);
+
+        // ustawia...
+        document.getElementById("new2").innerHTML = "Wiek osoby: " + wiek;
+
+        // ...ale też zwraca wiek
+        return wiek;
+      }
+
+    
+      function dane() {
+        // wpisanie bmi i wieku do tabeli - zwróć uwagę że wywołujemy! funkcję z pomocą ( i )
+        // po czym jej wynik pakujemy do pól obiektu
+        var pomiar = {
+          wiek: wiek(),
+          bmi: bmi(),
+
+          
+        }
+    
+        tabela.push(pomiar);
+        
+        
+        var time = new Date(); // czas BMI
+        
+        function czyszczenie (){  // nie działa mi czyszczenie wyników BMI
+          let czyszczenie =  dokument.getElementById("new4").value;
+          czyszczenie("new4".innerHTML = "");}
+
+
+
+        // sklejamy informację
+        let informacja =
+          "Pomiar #" +
+          tabela.length +
+          " BMI: " +
+          pomiar.bmi + // 
+          ", wiek: " +
+          pomiar.wiek +" ";
+
+        // for (i = 0; i < pomiar.bmi.length; i++)
+        //  if (i)
+       
+
+        // i doklejamy ją do HTMLa. znacznik "<br />" oznacza nową linię.
+        document.getElementById("new4").innerHTML =
+          document.getElementById("new4").innerHTML + "<br />" + informacja + "<br />" + "czas: " + time.toDateString('pl');
+      }
+  
+    </script>
+  </body>
+</html>
