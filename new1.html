@@ -56,7 +56,7 @@
       <input type="button" name="dane" value="tabela" Onclick="dane()" />
       <input type="button" name="czyszczenie" value="czyszczenie" Onclick="czyszczenie()" />
       <p id="new4">Historia</p>
-      
+      <p id="new5"></p>
     </div>
 
     <script type="text/javascript">
@@ -102,7 +102,8 @@
         return wiek;
       }
 
-    
+      
+          
       function dane() {
         // wpisanie bmi i wieku do tabeli - zwróć uwagę że wywołujemy! funkcję z pomocą ( i )
         // po czym jej wynik pakujemy do pól obiektu
@@ -115,15 +116,18 @@
     
         tabela.push(pomiar);
         
+        if (bmi.length>1){
+          if(pomiar>bmi){
+            document.getElementById("new5").innerHTML="twoje BMI zworsło";
+          }
+          else if(pomia<bmi){
+            document.getElementById("new5").innerHTML="twoje BMI zmalało";
+          }
+
+        }
         
         var time = new Date(); // czas BMI
-        
-        function czyszczenie (){  // nie działa mi czyszczenie wyników BMI
-          let czyszczenie =  dokument.getElementById("new4").value;
-          czyszczenie("new4".innerHTML = "");}
-
-
-
+           
         // sklejamy informację
         let informacja =
           "Pomiar #" +
@@ -133,15 +137,20 @@
           ", wiek: " +
           pomiar.wiek +" ";
 
-        // for (i = 0; i < pomiar.bmi.length; i++)
-        //  if (i)
+       
+       
+        
        
 
         // i doklejamy ją do HTMLa. znacznik "<br />" oznacza nową linię.
         document.getElementById("new4").innerHTML =
           document.getElementById("new4").innerHTML + "<br />" + informacja + "<br />" + "czas: " + time.toDateString('pl');
       }
-  
+      function czyszczenie (){  // działa mi czyszczenie wyników BMI
+          let czyszczenie =  document.getElementById("new4").innerHTML = "";
+         }
+          
+
     </script>
   </body>
 </html>
