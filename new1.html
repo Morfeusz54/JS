@@ -116,15 +116,7 @@
     
         tabela.push(pomiar);
         
-        if (bmi.length>1){
-          if(pomiar>bmi){
-            document.getElementById("new5").innerHTML="twoje BMI zworsło";
-          }
-          else if(pomia<bmi){
-            document.getElementById("new5").innerHTML="twoje BMI zmalało";
-          }
-
-        }
+       
         
         var time = new Date(); // czas BMI
            
@@ -137,7 +129,16 @@
           ", wiek: " +
           pomiar.wiek +" ";
 
-       
+          let i = pomiar.bmi; // porownanie bmi ale  nie działa
+          
+          if(i>pomiar.bmi, i++){
+            document.getElementById("new5").innerHTML="twoje BMI zwrosło";
+          }
+          else if(i<pomiar.bmi, i--){
+            document.getElementById("new5").innerHTML="twoje BMI zmalało";
+          }
+
+        
        
         
        
