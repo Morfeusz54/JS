@@ -129,15 +129,16 @@
           ", wiek: " +
           pomiar.wiek +" ";
 
-          let i = pomiar.bmi; // porownanie bmi ale  nie działa
+         //let i = pomiar.bmi; // porownanie bmi ale  nie działa
           
-          if(i>pomiar.bmi, i++){
+          if (tabela.length>1){
+          if(pomiar.bmi>d){
             document.getElementById("new5").innerHTML="twoje BMI zwrosło";
           }
-          else if(i<pomiar.bmi, i--){
+          if(pomiar.bmi<d){
             document.getElementById("new5").innerHTML="twoje BMI zmalało";
           }
-
+          }
         
        
         
@@ -149,6 +150,7 @@
       }
       function czyszczenie (){  // działa mi czyszczenie wyników BMI
           let czyszczenie =  document.getElementById("new4").innerHTML = "";
+          
          }
           
 
