@@ -24,6 +24,7 @@
     </style>
   </head>
   <body>
+    <title>Kalkulator BMI</title>
     <div>
       <p>Wzrost</p>
       <p>Podaj swój wzrost: <input type="number" id="zwrost" /></p>
@@ -81,8 +82,7 @@
         //  BMI
         
         d = (b / ((a *a)/1000)).toFixed(2);
-        //let i = b.length-1;
-
+     
         // ustawia...
         document.getElementById("new3").innerHTML = "BMI: " + d;
         document.getElementById("new").innerHTML = "Zwrost: " + a;
@@ -101,8 +101,6 @@
         // ...ale też zwraca wiek
         return wiek;
       }
-
-      
           
       function dane() {
         // wpisanie bmi i wieku do tabeli - zwróć uwagę że wywołujemy! funkcję z pomocą ( i )
@@ -110,14 +108,10 @@
         var pomiar = {
           wiek: wiek(),
           bmi: bmi(),
-
-          
         }
     
         tabela.push(pomiar);
-        
-       
-        
+               
         var time = new Date(); // czas BMI
            
         // sklejamy informację
@@ -129,21 +123,19 @@
           ", wiek: " +
           pomiar.wiek +" ";
 
-         //let i = pomiar.bmi; // porownanie bmi ale  nie działa
+         let poprzedniPomiar = tabela[tabela.length - 2]; // porownanie bmi ale 
+         let obecneBmi = pomiar.bmi[0];
+         let poprzednieBmi = poprzedniPomiar.bmi[0];  
           
           if (tabela.length>1){
-          if(pomiar.bmi>d){
+          if(obecneBmi>poprzednieBmi){
             document.getElementById("new5").innerHTML="twoje BMI zwrosło";
           }
-          if(pomiar.bmi<d){
+          if(obecneBmi<poprzednieBmi){
             document.getElementById("new5").innerHTML="twoje BMI zmalało";
           }
           }
         
-       
-        
-       
-
         // i doklejamy ją do HTMLa. znacznik "<br />" oznacza nową linię.
         document.getElementById("new4").innerHTML =
           document.getElementById("new4").innerHTML + "<br />" + informacja + "<br />" + "czas: " + time.toDateString('pl');
@@ -152,8 +144,7 @@
           let czyszczenie =  document.getElementById("new4").innerHTML = "";
           
          }
-          
-
+       
     </script>
   </body>
 </html>
